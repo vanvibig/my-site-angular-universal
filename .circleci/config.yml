@@ -20,9 +20,9 @@ jobs:
       - run:
           name: 'Setting env'
           command: 'npm run build'
-      - run:
-          name: 'Setting env'
-          command: 'cd ..'
+      # - run:
+      #     name: 'Setting env'
+      #     command: 'cd ..'
       - run:
           name: 'Setting env'
           command: 'npm install ws xhr2 bufferutil utf-8-validate  -D'
