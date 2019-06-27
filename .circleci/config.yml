@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run: 
           name: 'install function'
-          command: cd functions && npm instal
+          command: 'cd functions && npm install && npm run build'
       - run:
           name: 'Setting env'
           command: 'npm install'
@@ -21,9 +21,7 @@ jobs:
           command: 'npm install ws xhr2 bufferutil utf-8-validate  -D'
       - run:
           name: 'Build Project'
-          working_directory: ./functions
           command: 'npm run build:ssr'
       - run:
           name: 'Deploy to Firebase Hosting'
-          working_directory: ./functions
           command: './node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN'
