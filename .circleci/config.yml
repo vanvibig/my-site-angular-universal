@@ -7,33 +7,18 @@ jobs:
     
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - 'v1-dependencies-{{ checksum "./function/package.json" }}'
-            - v1-dependencies-
-      # - run:
-      #     name: 'Setting env'
-      #     command: 'cd functions'
+      - run: 
+          name: 'install function'
+          command: cd functions && npm instal
       - run:
           name: 'Setting env'
-          working_directory: ./functions
           command: 'npm install'
       - run:
           name: 'Setting env'
-          working_directory: ./functions
           command: 'npm run build'
-      # - run:
-      #     name: 'Setting env'
-      #     command: 'cd ..'
       - run:
           name: 'Setting env'
-          working_directory: ./functions
           command: 'npm install ws xhr2 bufferutil utf-8-validate  -D'
-      - run: 'npm install'
-      - save_cache:
-          paths:
-            - node_modules
-          key: 'v1-dependencies-{{ checksum "package.json" }}'
       - run:
           name: 'Build Project'
           working_directory: ./functions
