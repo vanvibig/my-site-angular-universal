@@ -7,9 +7,6 @@ jobs:
     
     steps:
       - checkout
-      - run: 
-          name: 'install function'
-          command: 'cd functions && npm install && npm run build'
       - run:
           name: 'Setting env'
           command: 'npm install'
@@ -19,6 +16,9 @@ jobs:
       - run:
           name: 'Setting env'
           command: 'npm install ws xhr2 bufferutil utf-8-validate  -D'
+      - run: 
+          name: 'install function'
+          command: 'cd functions && npm install && npm run build'
       - run:
           name: 'Build Project'
           command: 'npm run build:ssr'
