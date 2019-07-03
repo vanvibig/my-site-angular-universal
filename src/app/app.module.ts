@@ -1,30 +1,38 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 // 1. Import the libs you need
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AboutComponent } from './about/about.component';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AboutComponent} from './about/about.component';
+import {NgxsModule} from '@ngxs/store';
+import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
+import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
+import {CreateComponent} from './components/create/create.component';
+import {IndexComponent} from './components/index/index.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {UserState} from './state/user.state';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB3EESWXKT9_Q3EWqnbCBMB4YPEcTqN6TM",
-  authDomain: "mysitekv.firebaseapp.com",
-  databaseURL: "https://mysitekv.firebaseio.com",
-  projectId: "mysitekv",
-  storageBucket: "mysitekv.appspot.com",
-  messagingSenderId: "704627422302",
-  appId: "1:704627422302:web:80b43cc19ec3e9e3"
+  apiKey: 'AIzaSyB3EESWXKT9_Q3EWqnbCBMB4YPEcTqN6TM',
+  authDomain: 'mysitekv.firebaseapp.com',
+  databaseURL: 'https://mysitekv.firebaseio.com',
+  projectId: 'mysitekv',
+  storageBucket: 'mysitekv.appspot.com',
+  messagingSenderId: '704627422302',
+  appId: '1:704627422302:web:80b43cc19ec3e9e3'
 };
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    CreateComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -32,7 +40,13 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage,
+    NgxsModule.forRoot([
+      UserState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
