@@ -1,8 +1,8 @@
 // user.action.ts
 
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { User } from '../models/User';
 import { AddUser } from '../actions/user.action';
+import {User} from '../models/user';
 
 export class UserStateModel {
   users: User[];
