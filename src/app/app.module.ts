@@ -14,8 +14,17 @@ import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
 import {CreateComponent} from './components/create/create.component';
 import {IndexComponent} from './components/index/index.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserState} from './state/user.state';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {LoginComponent} from './admin/login/login.component';
+import {RegisterComponent} from './admin/register/register.component';
+import {ForgotPasswordComponent} from './admin/forgot-password/forgot-password.component';
+import {VerifyEmailComponent} from './admin/verify-email/verify-email.component';
+import { AdminComponent } from './admin/admin.component';
+import { AuthComponent } from './admin/auth/auth.component';
+import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
+import {HttpClientModule} from '@angular/common/http';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB3EESWXKT9_Q3EWqnbCBMB4YPEcTqN6TM',
@@ -33,6 +42,13 @@ const firebaseConfig = {
     AboutComponent,
     CreateComponent,
     IndexComponent,
+    UserProfileComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
+    AdminComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -47,6 +63,13 @@ const firebaseConfig = {
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
+    LoggerModule.forRoot({
+        serverLoggingUrl: '/api/logs',
+        level: NgxLoggerLevel.DEBUG,
+        serverLogLevel: NgxLoggerLevel.ERROR
+      }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

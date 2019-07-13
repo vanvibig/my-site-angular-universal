@@ -1,6 +1,8 @@
-// User.ts
-
 export interface User {
-  name: string;
-  email: string;
+  uid?: string;
+  name?: string;
+  email?: string;
+  photoURL?: string;
+  displayName?: string;
+  myCustomData?: string;
 }
