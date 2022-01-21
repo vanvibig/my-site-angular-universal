@@ -33,7 +33,7 @@
     "bootstrap": "^4.3.1",
     "express": "^4.15.2",
     "firebase": "^6.2.3",
-    "log4js": "^4.5.1",
+    "log4js": "^6.4.0",
     "ngx-logger": "^3.4.5",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
