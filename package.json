@@ -31,7 +31,7 @@
     "@ngxs/logger-plugin": "^3.4.3",
     "@ngxs/store": "^3.4.3",
     "bootstrap": "^4.3.1",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "firebase": "^6.2.3",
     "log4js": "^4.5.1",
     "ngx-logger": "^3.4.5",
